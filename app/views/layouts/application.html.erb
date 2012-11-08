@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AppName</title>
+  <title>Ruby on Rails Sample App | <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>	<!-- prevent cross-site-request-forgery -->
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<!--yield is here so it can display the .html.erb fiels in /views, i.e. /views/home.html.erb-->
 <%= yield %>
 
 </body>
