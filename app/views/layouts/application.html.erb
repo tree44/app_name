@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ruby on Rails Sample App | <%= yield(:title) %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>	<!-- prevent cross-site-request-forgery -->
-  <%= csrf_meta_tags %>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag("application", :media => "all") %>
+  <%= javascript_include_tag("application") %>	<!-- prevent cross-site-request-forgery -->
+  <%= csrf_meta_tags() %>
+  <%= render 'layouts/shim' %> 
 </head>
-<body>
-<!--yield is here so it can display the .html.erb fiels in /views, i.e. /views/home.html.erb-->
-<%= yield %>
-
-</body>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <!--yield is here so it can display the .html.erb fiels in /views, i.e. /views/home.html.erb-->
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>
