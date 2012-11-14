@@ -1,5 +1,7 @@
 AppName::Application.routes.draw do
-  resources :microposts
+  resources :systems
+
+  resources :microposts, only: [:new, :update, :edit, :show, :index]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -11,6 +13,7 @@ AppName::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/users',   to: 'users#index'
+  match '/systems', to: 'system#index'
   
 
   # The priority is based upon order of creation:

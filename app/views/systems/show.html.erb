@@ -1,0 +1,47 @@
+<% provide(:title, @system.name) %>
+
+<!-- <p id="notice"><%= notice %></p> -->
+
+<p>
+  <b>Name:</b>
+  <%= @system.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @system.location %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @system.description %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @system.contact %>
+</p>
+
+<p>
+  <b>Serialnumber:</b>
+  <%= @system.serialNumber %>
+</p>
+
+<p>
+  <b>Hardwareversion:</b>
+  <%= @system.hardwareVersion %>
+</p>
+
+<p>
+  <b>Softwareversion:</b>
+  <%= @system.softwareVersion %>
+</p>
+
+<p>
+  <b>Dbversion:</b>
+  <%= @system.dbVersion %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_path(@system) %> |
+<%= link_to 'Back', systems_path %>

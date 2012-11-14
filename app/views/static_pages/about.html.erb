@@ -1,3 +1,17 @@
+<script type="text/javascript">
+function about() {
+	info = document.getElementById('about-content');
+	if (window.XMLHttpRequest)
+	  { xhr = new XMLHttpRequest(); }
+	else
+	  { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
+	xhr.open("GET","rails/info/properties",false);
+	xhr.send("");
+	info.innerHTML = xhr.responseText;
+	info.style.display = 'block'
+}
+</script>
+
 <% provide(:title, 'About Us') %>
 <h1>About Us</h1>
 <p>
@@ -5,4 +19,10 @@
   <a href="http://app-name-9876.herokuapp.com/">Test Application</a>
   sample application.
 </p>
+
+<div id="about">
+	<div id="about-content" style="display: none">
+	<script>about();</script>
+  </div>
+</div>
 

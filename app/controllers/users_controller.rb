@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  
+  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :correct_user,   only: [:edit, :update]
+
+
   def index
     @users = User.all
 
@@ -44,8 +49,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        sign_in(@user)
-        flash[:success] = "User was successfully created."
+        sign_in @user
+        flash.now[:success] = "User was successfully created."
         format.html { redirect_to @user }
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
@@ -63,7 +68,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash.now[:notice] = "User was successfully updated."
+        format.html { redirect_to @user }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,4 +89,21 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def signed_in_user
+      if !signed_in?
+        flash[:notice] = "Please sign in."
+        redirect_to signin_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      if !current_user?(@user)
+        flash[:error] = "You cannot edit another user."
+        redirect_to root_path
+      end
+    end
 end
