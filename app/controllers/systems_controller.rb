@@ -48,19 +48,19 @@ class SystemsController < ApplicationController
 
   # POST /systems
   # POST /systems.json
-#  def create
-#    @system = System.new(params[:system])
-#
-#    respond_to do |format|
-#      if @system.save
-#        format.html { redirect_to @system, notice: 'System was successfully created.' }
-#        format.json { render json: @system, status: :created, location: @system }
-#      else
-#        format.html { render action: "new" }
-#        format.json { render json: @system.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
+  def create
+    @system = System.new(params[:system])
+
+    respond_to do |format|
+      if @system.save
+        format.html { redirect_to @system, notice: 'System was successfully created.' }
+        format.json { render json: @system, status: :created, location: @system }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @system.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PUT /systems/1
   # PUT /systems/1.json
