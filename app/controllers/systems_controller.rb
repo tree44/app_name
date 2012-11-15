@@ -71,7 +71,8 @@ class SystemsController < ApplicationController
       if @system.update_attributes(params[:system])
         flash.now[:success] = "System was successfully updated."
         format.html { redirect_to @system }
-        format.json { head :no_content }
+        #proper response to http PUT is also no_content
+        format.json { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @system.errors, status: :unprocessable_entity }

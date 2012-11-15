@@ -11,6 +11,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+  self.include_root_in_json = true
   has_secure_password
   has_many :microposts
 
